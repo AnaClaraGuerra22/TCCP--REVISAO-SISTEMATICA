@@ -1,0 +1,86 @@
+IEEE XPLORE — BUSCA DEFINITIVA
+
+Database: IEEE Xplore
+Search version: v1.0
+Search type: definitive
+Search date: 2026-10-06
+Search time: 15:31
+Publication period filter: 2020 to search date
+Additional non-temporal filters: none
+Results: 230
+
+QUERY EXECUTED:
+
+(
+  "retrieval augmented generation"
+  OR "retrieval-augmented generation"
+  OR "retrieval enhanced generation"
+  OR "retrieval-enhanced generation"
+  OR "GraphRAG"
+  OR "graph RAG"
+  OR "agentic RAG"
+  OR "multimodal RAG"
+  OR ("RAG" AND ("large language model*" OR LLM*))
+)
+AND
+(
+  environmental
+  OR climat*
+  OR ecolog*
+)
+
+NOTES:
+
+This query corresponds to the frozen IEEE Xplore search strategy v1.0.
+
+The publication period was restricted to 2020 through the definitive
+search date, as specified in the protocol.
+
+Applying the publication period filter did not change the result count,
+because the oldest retrieved record was published in 2024.
+
+No additional thematic, document type, language, Open Access, subject
+area, author, publisher or other non-temporal filters were applied.
+
+The definitive search returned 230 records.
+
+The pilot execution performed on 2026-10-04 also returned 230 records.
+The identical result count does not represent reuse of the pilot search;
+the definitive query was executed again after protocol v1.0 freeze.
+
+The count of 230 records will be used as the definitive IEEE Xplore
+identification count for the systematic review.
+
+
+VERIFICATION BEFORE EXPORT:
+
+Result count verified: 230
+Publication period filter applied: 2020 to search date
+Result count after publication period filter: 230
+Additional non-temporal interface filters applied: none
+Search strategy checked against search_strings.md: yes
+Ready for raw export: yes
+
+
+RAW EXPORT:
+
+Export completed: yes
+Export format: CSV
+Exported records expected: 230
+Exported records: 230
+Export file: ieee_v1.0_2026-10-06.csv
+Raw file modified after export: no
+
+EXPORTED FIELDS:
+
+Bibliographic information: yes
+Abstract: yes
+DOI: yes
+Author keywords: yes
+IEEE terms: yes
+Document identifier: yes
+
+Integrity check:
+Expected records: 230
+Exported records: 230
+Status: OK
