@@ -1,0 +1,91 @@
+LLM PRE-SCREENING — MODEL CONFIGURATION
+
+Project:
+Systematic Review — Retrieval-Augmented Generation in Environmental
+and Environmental Sustainability Domains
+
+Configuration version: v1.0
+Configuration date: 2026-10-06
+
+EXECUTION ENVIRONMENT
+
+Execution mode: local
+LLM runtime: Ollama
+Ollama version: 0.40.0
+
+MODEL
+
+Model name: qwen3:8b
+Model ID: 500a1f067a9f
+Model size: 5.2 GB
+Model provider/family: Qwen
+Execution through external API: no
+Web access: no
+Web scraping: no
+
+INFERENCE SETTINGS
+
+Temperature: 0
+Thinking mode: disabled
+Structured output: to be defined in prompt v1.0
+Independent processing of each record: yes
+Conversation memory between records: no
+
+SCREENING ROLE
+
+Purpose:
+LLM-assisted pre-screening of title and abstract.
+
+Allowed suggested decisions:
+- include
+- exclude
+- maybe
+
+Official eligibility decision made by LLM: no
+Automatic exclusion allowed: no
+Human reviewer remains responsible for final decision: yes
+
+INPUT DATA
+
+Source:
+search/exports/processed/records_deduplicated.csv
+
+Number of deduplicated records: 587
+
+Fields potentially provided to the model:
+- record_id
+- title
+- abstract
+- author_keywords
+- index_keywords
+- document_type
+- document_identifier
+
+Fields not used as eligibility evidence:
+- source_database
+- source_record_id
+- doi
+- doi_normalized
+- url
+- native_id
+- title_normalized
+
+CALIBRATION
+
+Calibration required before full execution: yes
+Calibration records: 18
+Human reference decisions hidden from model during inference: yes
+
+PROMPT
+
+Prompt status: not yet frozen
+Prompt version: to be defined in the next step
+
+NOTES
+
+The model is used exclusively as a pre-screening support tool.
+
+Its output will be stored separately from the official human decision log.
+
+No record may be excluded from the systematic review solely on the
+basis of the LLM output.

@@ -1,0 +1,109 @@
+﻿calibration_id,record_id,model_name,model_id,prompt_version,decision,reason_code,confidence,rationale,status,validation_errors,elapsed_seconds,raw_response
+C01,R0051,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,The study applies RAG in an agricultural context with empirical evaluation. Environmental sustainability is a central focus through indoor farming and resource management.,ok,,210.95,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study applies RAG in an agricultural context with empirical evaluation. Environmental sustainability is a central focus through indoor farming and resource management.""
+}"
+C02,R0028,qwen3:8b,500a1f067a9f,v1.1-candidate,maybe,,medium,The study mentions retrieval-augmented generation but does not clearly specify whether it is implemented or evaluated. Environmental relevance is not explicitly stated.,ok,,95.87,"{
+  ""decision"": ""maybe"",
+  ""reason_code"": """",
+  ""confidence"": ""medium"",
+  ""rationale"": ""The study mentions retrieval-augmented generation but does not clearly specify whether it is implemented or evaluated. Environmental relevance is not explicitly stated.""
+}"
+C03,R0133,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study presents a RAG system integrated with satellite data for wildfire prediction, which is an environmental application with empirical evaluation.",ok,,154.54,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study presents a RAG system integrated with satellite data for wildfire prediction, which is an environmental application with empirical evaluation.""
+}"
+C04,R0216,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study applies RAG in drafting environmental impact statements, integrates retrieval with generation, and includes empirical evaluation.",ok,,113.11,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study applies RAG in drafting environmental impact statements, integrates retrieval with generation, and includes empirical evaluation.""
+}"
+C05,R0277,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study applies RAG with an environmental knowledge base for dialog-based embodied navigation, and includes empirical evaluation.",ok,,102.36,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study applies RAG with an environmental knowledge base for dialog-based embodied navigation, and includes empirical evaluation.""
+}"
+C06,R0465,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study applies RAG with LLMs to environmental product declarations in the built environment, includes empirical evaluation, and addresses environmental sustainability.",ok,,204.22,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study applies RAG with LLMs to environmental product declarations in the built environment, includes empirical evaluation, and addresses environmental sustainability.""
+}"
+C07,R0559,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study proposes a retrieval-augmented generation system using a knowledge graph and vector retrieval for microgrid battery dispatch, with empirical evaluation on degradation and extreme heat.",ok,,275.29,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study proposes a retrieval-augmented generation system using a knowledge graph and vector retrieval for microgrid battery dispatch, with empirical evaluation on degradation and extreme heat.""
+}"
+C08,R0394,qwen3:8b,500a1f067a9f,v1.1-candidate,maybe,,medium,"The study integrates Relation-Aware Graph (RAG) attention mechanisms, which may indicate retrieval-augmented generation. However, the abstract does not clearly specify whether retrieved information is used in a generative model. Environmental relevance is mentioned in terms of wildlife conservation and biodiversity, but it is not explicitly central to the study's objectives or evaluation.",ok,,490.83,"{
+  ""decision"": ""maybe"",
+  ""reason_code"": """",
+  ""confidence"": ""medium"",
+  ""rationale"": ""The study integrates Relation-Aware Graph (RAG) attention mechanisms, which may indicate retrieval-augmented generation. However, the abstract does not clearly specify whether retrieved information is used in a generative model. Environmental relevance is mentioned in terms of wildlife conservation and biodiversity, but it is not explicitly central to the study's objectives or evaluation.""
+}"
+C09,R0169,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study proposes a Retrieval-Augmented Generation system for carbon reporting, which is an environmental domain. It includes empirical evaluation and meets all inclusion criteria.",ok,,380.76,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study proposes a Retrieval-Augmented Generation system for carbon reporting, which is an environmental domain. It includes empirical evaluation and meets all inclusion criteria.""
+}"
+C10,R0404,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study applies RAG to extract structured insights from sustainability reports, and the environmental dimension is substantive through ESG analysis.",ok,,293.37,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study applies RAG to extract structured insights from sustainability reports, and the environmental dimension is substantive through ESG analysis.""
+}"
+C11,R0583,qwen3:8b,500a1f067a9f,v1.1-candidate,maybe,,medium,"The study describes a system using RAG components like semantic search and web search to generate maintenance recommendations, but it is unclear if the retrieved information is explicitly integrated into a generative model. Environmental relevance is not clearly established.",ok,,254.32,"{
+  ""decision"": ""maybe"",
+  ""reason_code"": """",
+  ""confidence"": ""medium"",
+  ""rationale"": ""The study describes a system using RAG components like semantic search and web search to generate maintenance recommendations, but it is unclear if the retrieved information is explicitly integrated into a generative model. Environmental relevance is not clearly established.""
+}"
+C12,R0455,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,The study applies RAG in a biodiversity monitoring context and includes empirical evaluation.,ok,,302.44,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study applies RAG in a biodiversity monitoring context and includes empirical evaluation.""
+}"
+C13,R0141,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,The study presents a hybrid retrieval framework integrating RAG for semantically interpreting local planning documents to match infrastructure funding opportunities. The environmental focus is on rural communities and infrastructure development in environmentally threatened areas.,ok,,389.96,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study presents a hybrid retrieval framework integrating RAG for semantically interpreting local planning documents to match infrastructure funding opportunities. The environmental focus is on rural communities and infrastructure development in environmentally threatened areas.""
+}"
+C14,R0073,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study applies retrieval-augmented generation (RAG) with dynamic regulatory knowledge graphs and compliance-guided generative models. It addresses environmental conditions and multi-standard compliance in intelligent connected vehicles, meeting the environmental domain criteria.",ok,,337.21,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study applies retrieval-augmented generation (RAG) with dynamic regulatory knowledge graphs and compliance-guided generative models. It addresses environmental conditions and multi-standard compliance in intelligent connected vehicles, meeting the environmental domain criteria.""
+}"
+C15,R0486,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study develops a domain-specific LLM with retrieval-augmented generation for Earth system data navigation, and includes empirical evaluation.",ok,,364.34,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study develops a domain-specific LLM with retrieval-augmented generation for Earth system data navigation, and includes empirical evaluation.""
+}"
+C16,R0143,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study presents a multi-agent system for sustainable travel recommendations, integrating retrieval-augmented generation with sustainability scoring. The environmental dimension is substantive, focusing on environmental impact, community, and cultural heritage.",ok,,418.17,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study presents a multi-agent system for sustainable travel recommendations, integrating retrieval-augmented generation with sustainability scoring. The environmental dimension is substantive, focusing on environmental impact, community, and cultural heritage.""
+}"
+C17,R0196,qwen3:8b,500a1f067a9f,v1.1-candidate,maybe,,medium,The study mentions Retrieval-Augmented Generation (RAG) but does not clearly describe how retrieved information is integrated into a generative model. Environmental relevance is ambiguous.,ok,,387.89,"{
+  ""decision"": ""maybe"",
+  ""reason_code"": """",
+  ""confidence"": ""medium"",
+  ""rationale"": ""The study mentions Retrieval-Augmented Generation (RAG) but does not clearly describe how retrieved information is integrated into a generative model. Environmental relevance is ambiguous.""
+}"
+C18,R0255,qwen3:8b,500a1f067a9f,v1.1-candidate,include,,high,"The study applies GraphRAG, a Retrieval-Augmented Generation framework, and addresses environmental sustainability in the built environment through life cycle assessment and resource efficiency.",ok,,1516.79,"{
+  ""decision"": ""include"",
+  ""reason_code"": """",
+  ""confidence"": ""high"",
+  ""rationale"": ""The study applies GraphRAG, a Retrieval-Augmented Generation framework, and addresses environmental sustainability in the built environment through life cycle assessment and resource efficiency.""
+}"

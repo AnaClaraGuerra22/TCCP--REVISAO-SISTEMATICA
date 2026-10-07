@@ -1,0 +1,56 @@
+﻿calibration_id,record_id,model_name,model_id,prompt_version,primary_study,primary_study_evidence,operational_rag,operational_rag_evidence,environmental_domain,environmental_domain_evidence,empirical_evaluation,empirical_evaluation_evidence,rag_role,derived_decision,derived_reason_code,status,validation_errors,elapsed_seconds,raw_response
+C02,R0028,llama3.2:3b,a80c4f17acd5,v1.2-candidate,yes,"The record describes original research, a developed system, experiment, benchmark, case study, or other primary research.",no,The record clearly describes LLM generation without external retrieval.,no,The record does not establish a substantive environmental connection.,no,"The record presents only a proposal/framework and states that evaluation, validation, implementation, or deployment is future work.",unclear,exclude,CE1,ok,,42.34,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes original research, a developed system, experiment, benchmark, case study, or other primary research."",
+  ""operational_rag"": ""no"",
+  ""operational_rag_evidence"": ""The record clearly describes LLM generation without external retrieval."",
+  ""environmental_domain"": ""no"",
+  ""environmental_domain_evidence"": ""The record does not establish a substantive environmental connection."",
+  ""empirical_evaluation"": ""no"",
+  ""empirical_evaluation_evidence"": ""The record presents only a proposal/framework and states that evaluation, validation, implementation, or deployment is future work."",
+  ""rag_role"": ""unclear""
+}"
+C03,R0133,llama3.2:3b,a80c4f17acd5,v1.2-candidate,yes,"The record describes original research, a developed system, experiment, benchmark, case study, or other primary research.",yes,The record explicitly states that the study uses Retrieval-Augmented Generation (RAG) with generative use of retrieved information.,yes,"The record substantively addresses issues such as climate adaptation, conservation, biodiversity, emissions, sustainable irrigation, soil/environmental impacts, or resource efficiency.",yes,"The record reports evidence such as experiments, benchmarks, quantitative metrics, and qualitative evaluation.",central,include,,ok,,31.27,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes original research, a developed system, experiment, benchmark, case study, or other primary research."",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The record explicitly states that the study uses Retrieval-Augmented Generation (RAG) with generative use of retrieved information."",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""The record substantively addresses issues such as climate adaptation, conservation, biodiversity, emissions, sustainable irrigation, soil/environmental impacts, or resource efficiency."",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""The record reports evidence such as experiments, benchmarks, quantitative metrics, and qualitative evaluation."",
+  ""rag_role"": ""central""
+}"
+C05,R0277,llama3.2:3b,a80c4f17acd5,v1.2-candidate,yes,"The record describes original research, a developed system, experiment, benchmark, case study, or other primary research.",yes,The record describes the use of Retrieval-Augmented Generation (RAG) with a need-oriented environmental knowledge base.,yes,"The record substantively addresses issues such as climate adaptation, conservation, biodiversity, emissions, sustainable irrigation, soil/environmental impacts, or resource efficiency.",yes,"The record reports evidence such as experiments, benchmarks, quantitative metrics, qualitative evaluation, comparisons, case-study evaluation, user evaluation, expert evaluation.",central,include,,ok,,28.07,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes original research, a developed system, experiment, benchmark, case study, or other primary research."",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The record describes the use of Retrieval-Augmented Generation (RAG) with a need-oriented environmental knowledge base."",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""The record substantively addresses issues such as climate adaptation, conservation, biodiversity, emissions, sustainable irrigation, soil/environmental impacts, or resource efficiency."",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""The record reports evidence such as experiments, benchmarks, quantitative metrics, qualitative evaluation, comparisons, case-study evaluation, user evaluation, expert evaluation."",
+  ""rag_role"": ""central""
+}"
+C08,R0394,llama3.2:3b,a80c4f17acd5,v1.2-candidate,yes,"The record describes original research, a developed system, experiment, benchmark, case study, or other primary research.",yes,The record mentions the use of Relation-Aware Graph (RAG) attention mechanisms in the body feature extraction branch.,yes,The record mentions the use of full-body images to simulate the wild environment and the creation of a multi-angle full-body giant panda age dataset (MFBPAD).,yes,"The record reports evidence such as experiments, benchmarks, and quantitative metrics.",baseline_or_comparator,maybe,,ok,,29.01,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes original research, a developed system, experiment, benchmark, case study, or other primary research."",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The record mentions the use of Relation-Aware Graph (RAG) attention mechanisms in the body feature extraction branch."",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""The record mentions the use of full-body images to simulate the wild environment and the creation of a multi-angle full-body giant panda age dataset (MFBPAD)."",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""The record reports evidence such as experiments, benchmarks, and quantitative metrics."",
+  ""rag_role"": ""baseline_or_comparator""
+}"
+C13,R0141,llama3.2:3b,a80c4f17acd5,v1.2-candidate,yes,"The record describes original research, a developed system, experiment, benchmark, case study, or other primary research.",yes,The record describes the use of a Retrieval-Augmented Generation (RAG) system that integrates keyword-based grant discovery with a generative model.,yes,"The record substantively addresses issues such as climate adaptation, conservation, biodiversity, emissions, sustainable irrigation, soil/environmental impacts, or resource efficiency.",yes,"The record reports evidence such as experiments, benchmarks, quantitative metrics, qualitative evaluation, comparisons, case-study evaluation, user evaluation, or expert evaluation.",central,include,,ok,,28.85,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes original research, a developed system, experiment, benchmark, case study, or other primary research."",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The record describes the use of a Retrieval-Augmented Generation (RAG) system that integrates keyword-based grant discovery with a generative model."",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""The record substantively addresses issues such as climate adaptation, conservation, biodiversity, emissions, sustainable irrigation, soil/environmental impacts, or resource efficiency."",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""The record reports evidence such as experiments, benchmarks, quantitative metrics, qualitative evaluation, comparisons, case-study evaluation, user evaluation, or expert evaluation."",
+  ""rag_role"": ""central""
+}"

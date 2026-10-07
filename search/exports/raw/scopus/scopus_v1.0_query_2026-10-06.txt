@@ -1,0 +1,82 @@
+SCOPUS — BUSCA DEFINITIVA
+
+Database: Scopus
+Search version: v1.0
+Search type: definitive
+Search date: 2026-10-06
+Search time: 15:05
+Publication year restriction in query: PUBYEAR > 2019
+Eligibility period: 2020 to search date
+Additional filters: none
+Results: 474
+
+
+QUERY EXECUTED:
+
+TITLE-ABS-KEY(
+  (
+    "retrieval augmented generation"
+    OR "retrieval-augmented generation"
+    OR "retrieval enhanced generation"
+    OR "retrieval-enhanced generation"
+    OR "GraphRAG"
+    OR "graph RAG"
+    OR "agentic RAG"
+    OR "multimodal RAG"
+    OR ("RAG" AND ("large language model*" OR LLM*))
+  )
+  AND
+  (
+    environmental
+    OR climat*
+    OR ecolog*
+  )
+)
+AND PUBYEAR > 2019
+
+NOTES:
+
+This query corresponds to the frozen Scopus search strategy v1.0.
+
+No additional filters were applied during the definitive execution.
+
+The definitive search returned 474 records.
+
+The pilot execution performed on 2026-10-04 returned 472 records.
+The difference of two records may reflect updates to the Scopus index
+between the pilot and definitive execution dates and does not represent
+a modification of the search strategy.
+
+
+The pilot count is retained separately for methodological traceability.
+The count of 474 records will be used as the definitive Scopus
+identification count for the systematic review.
+
+
+
+VERIFICATION BEFORE EXPORT:
+
+Result count verified: 474
+Additional interface filters applied: none
+Search strategy checked against search_strings.md: yes
+Ready for raw export: yes
+
+
+RAW EXPORT:
+
+Export completed: yes
+Export format: CSV
+Exported records expected: 474
+Export file: scopus_v1.0_2026-10-06.csv
+Raw file modified after export: no
+
+EXPORTED FIELDS:
+
+Citation information: yes
+Bibliographical information: yes
+Abstract & keywords: yes
+
+Integrity check:
+Expected records: 474
+Exported records: 474
+Status: OK

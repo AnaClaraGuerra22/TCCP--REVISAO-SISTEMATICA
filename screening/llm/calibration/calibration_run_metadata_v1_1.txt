@@ -1,0 +1,46 @@
+LLM CALIBRATION RUN — v1
+
+Run type: blind calibration
+Run started: 2026-10-06T18:21:40.004211-03:00
+Run finished: 2026-10-06T20:06:34.403320-03:00
+
+MODEL
+
+Model name: qwen3:8b
+Model ID: 500a1f067a9f
+Runtime: Ollama
+Temperature: 0
+Seed: 42
+Thinking: false
+Structured output: JSON
+
+PROMPT
+
+Prompt version: v1.1-candidate
+Prompt file: llm_screening_prompt_v1_1_candidate.txt
+Prompt SHA256: 1e3db465d50c4a81fd514281d5935012c8c6654c934ecc10b203707bea850856
+
+INPUT
+
+Input file: calibration_blind_v1.csv
+Input SHA256: ea41dbda1582e45bfbafcf808a9cd76bd6fe30ecf63e9005db3e513c3a391fe6
+Expected records: 18
+Processed records: 18
+
+RESULT
+
+Successful outputs: 18
+Outputs with error: 0
+
+include: 14
+exclude: 0
+maybe: 4
+
+Total execution seconds: 6294.40
+
+IMPORTANT
+
+Human reference decisions were not provided to the model during inference.
+
+This run is a calibration of the LLM-assisted pre-screening procedure.
+The outputs are suggestions and are not official eligibility decisions.
