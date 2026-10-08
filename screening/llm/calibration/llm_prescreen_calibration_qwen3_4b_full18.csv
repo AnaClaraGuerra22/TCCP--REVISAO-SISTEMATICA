@@ -1,0 +1,199 @@
+﻿calibration_id,record_id,model_name,model_id,prompt_version,primary_study,primary_study_evidence,operational_rag,operational_rag_evidence,environmental_domain,environmental_domain_evidence,empirical_evaluation,empirical_evaluation_evidence,rag_role,derived_decision,derived_reason_code,status,validation_errors,elapsed_seconds,raw_response
+C01,R0051,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,The record describes an integrated platform built around an agentic AI advisory pipeline that runs entirely on-device on commodity hardware.,yes,"The pipeline couples a RAG-grounded Mistral 7B language model with a LLaVA 7B vision-language model through condition-based routing, intent classification, multi-step reasoning, and an LLM validation gate.",yes,"The study addresses indoor farming, which involves climate adaptation, sustainable irrigation, and resource efficiency in controlled environments.",yes,"On Cos lettuce, the advisory pipeline achieved 82.00% weighted accuracy across 50 queries spanning health, symptom, watering, pest, root-health, and growth-stage categories.",central,include,,ok,,48.80,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes an integrated platform built around an agentic AI advisory pipeline that runs entirely on-device on commodity hardware."",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The pipeline couples a RAG-grounded Mistral 7B language model with a LLaVA 7B vision-language model through condition-based routing, intent classification, multi-step reasoning, and an LLM validation gate."",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""The study addresses indoor farming, which involves climate adaptation, sustainable irrigation, and resource efficiency in controlled environments."",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""On Cos lettuce, the advisory pipeline achieved 82.00% weighted accuracy across 50 queries spanning health, symptom, watering, pest, root-health, and growth-stage categories."",
+  ""rag_role"": ""central""
+}"
+C02,R0028,qwen3:4b,359d7dd4bcda,v1.2-candidate,no,Document type: Review,yes,Retrieval-augmented generation is mentioned as a key technology,no,Environmental costs are mentioned but not as a substantive environmental issue,unclear,No specific empirical evaluation methods described,central,exclude,CE3,ok,,28.01,"{
+  ""primary_study"": ""no"",
+  ""primary_study_evidence"": ""Document type: Review"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Retrieval-augmented generation is mentioned as a key technology"",
+  ""environmental_domain"": ""no"",
+  ""environmental_domain_evidence"": ""Environmental costs are mentioned but not as a substantive environmental issue"",
+  ""empirical_evaluation"": ""unclear"",
+  ""empirical_evaluation_evidence"": ""No specific empirical evaluation methods described"",
+  ""rag_role"": ""central""
+}"
+C03,R0133,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,RAG retrieves pertinent historical and geographical data and incorporates it into the model context,yes,Addresses wildfire prediction which is a climate-related environmental issue,yes,"Reports performance metrics including Accuracy-93.40%, Precision-91.78%, Recall-88.96%, F1 Score-90.35%, AUC-ROC-96.04%, and IoU-81.71%",central,include,,ok,,40.49,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""RAG retrieves pertinent historical and geographical data and incorporates it into the model context"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses wildfire prediction which is a climate-related environmental issue"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Reports performance metrics including Accuracy-93.40%, Precision-91.78%, Recall-88.96%, F1 Score-90.35%, AUC-ROC-96.04%, and IoU-81.71%"",
+  ""rag_role"": ""central""
+}"
+C04,R0216,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,no,The study evaluates coding agents against vanilla retrieval-augmented generation (RAG) setups but does not describe RAG as a method that retrieves from external sources and incorporates retrieved information into generation,yes,The benchmark focuses on drafting environmental impact statement (EIS) sections,yes,The study evaluates various state-of-the-art commercial coding agents on the benchmark and demonstrates their performance,baseline_or_comparator,exclude,CE1,ok,,31.76,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""no"",
+  ""operational_rag_evidence"": ""The study evaluates coding agents against vanilla retrieval-augmented generation (RAG) setups but does not describe RAG as a method that retrieves from external sources and incorporates retrieved information into generation"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""The benchmark focuses on drafting environmental impact statement (EIS) sections"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""The study evaluates various state-of-the-art commercial coding agents on the benchmark and demonstrates their performance"",
+  ""rag_role"": ""baseline_or_comparator""
+}"
+C05,R0277,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,Uses Retrieval-Augmented Generation (RAG) with need-oriented environmental knowledge base,yes,Addresses embodied navigation in virtual environments with environmental knowledge,yes,Evaluated using OpenEQA-based VirtualHome dataset and compared with LLM-based approach,central,include,,ok,,27.46,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Uses Retrieval-Augmented Generation (RAG) with need-oriented environmental knowledge base"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses embodied navigation in virtual environments with environmental knowledge"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Evaluated using OpenEQA-based VirtualHome dataset and compared with LLM-based approach"",
+  ""rag_role"": ""central""
+}"
+C06,R0465,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is Article,yes,EcoQuery is an AI assistant based on a retrieval-augmented generation (RAG) framework integrated with large language models,yes,Addresses embodied carbon in the built environment using environmental product declarations (EPDs),yes,"Achieved 83% accuracy, 87% precision, 85% recall, 81% exact match, and BERTScore of 0.89",central,include,,ok,,41.84,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is Article"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""EcoQuery is an AI assistant based on a retrieval-augmented generation (RAG) framework integrated with large language models"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses embodied carbon in the built environment using environmental product declarations (EPDs)"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Achieved 83% accuracy, 87% precision, 85% recall, 81% exact match, and BERTScore of 0.89"",
+  ""rag_role"": ""central""
+}"
+C07,R0559,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,"The record describes a proposed framework with experiments and validation results, indicating original research.",yes,The framework combines vector retrieval over battery degradation literature with a generative model to provide recommendations and explanations.,yes,"The study addresses battery degradation under extreme heat, which relates to climate adaptation and environmental impact.",yes,Experiments reveal a nonlinear relationship between cost/lifespan and cycling penalty weight with specific metrics.,central,include,,ok,,43.03,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes a proposed framework with experiments and validation results, indicating original research."",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The framework combines vector retrieval over battery degradation literature with a generative model to provide recommendations and explanations."",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""The study addresses battery degradation under extreme heat, which relates to climate adaptation and environmental impact."",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Experiments reveal a nonlinear relationship between cost/lifespan and cycling penalty weight with specific metrics."",
+  ""rag_role"": ""central""
+}"
+C08,R0394,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Record describes a multi-branch deep learning model design and experimental results with a dataset,no,"Uses Relation-Aware Graph (RAG) attention mechanisms, which is explicitly defined as a different concept",unclear,Mentions wildlife conservation and biodiversity protection but does not specify substantive environmental issues,yes,Reports mean absolute error (MAE) of 2.42 on the MFBPAD dataset,not_applicable,exclude,CE1,ok,,58.00,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Record describes a multi-branch deep learning model design and experimental results with a dataset"",
+  ""operational_rag"": ""no"",
+  ""operational_rag_evidence"": ""Uses Relation-Aware Graph (RAG) attention mechanisms, which is explicitly defined as a different concept"",
+  ""environmental_domain"": ""unclear"",
+  ""environmental_domain_evidence"": ""Mentions wildlife conservation and biodiversity protection but does not specify substantive environmental issues"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Reports mean absolute error (MAE) of 2.42 on the MFBPAD dataset"",
+  ""rag_role"": ""not_applicable""
+}"
+C09,R0169,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is Article,yes,Self-decisive Multi-Agentic Retrieval-Augmented Generation (RAG) is used with locally hosted knowledge repository,yes,Carbon reporting for climate commitments and sustainability disclosures,yes,Evaluated on real-life carbon data and standards against multiple baselines,central,include,,ok,,46.12,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is Article"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Self-decisive Multi-Agentic Retrieval-Augmented Generation (RAG) is used with locally hosted knowledge repository"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Carbon reporting for climate commitments and sustainability disclosures"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Evaluated on real-life carbon data and standards against multiple baselines"",
+  ""rag_role"": ""central""
+}"
+C10,R0404,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is Article,yes,Uses Retrieval-Augmented Generation (RAG) paradigm to extract structured insights,unclear,"Discusses ESG (Environmental, Social, and Governance) dimensions but does not specify substantive environmental focus",yes,Conducted statistical analyses revealing ESG criteria cover wide range of topics and disclosure similarities among companies,central,maybe,,ok,,57.79,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is Article"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Uses Retrieval-Augmented Generation (RAG) paradigm to extract structured insights"",
+  ""environmental_domain"": ""unclear"",
+  ""environmental_domain_evidence"": ""Discusses ESG (Environmental, Social, and Governance) dimensions but does not specify substantive environmental focus"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Conducted statistical analyses revealing ESG criteria cover wide range of topics and disclosure similarities among companies"",
+  ""rag_role"": ""central""
+}"
+C11,R0583,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,The record describes an integrated LLM-based intelligent system for prescriptive maintenance that extends beyond traditional anomaly detection to provide actionable maintenance recommendations.,yes,The system uses vector embeddings and semantic search to retrieve procedural knowledge from maintenance manuals and web searches to access up-to-date maintenance practices for accurate recommendations.,no,"The study focuses on industrial machinery maintenance without explicit connection to environmental, ecological, climatic, or sustainability issues.",yes,Experimental validation in bearing vibration datasets demonstrates effective anomaly detection and contextually relevant maintenance guidance.,central,exclude,CE2,ok,,52.45,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes an integrated LLM-based intelligent system for prescriptive maintenance that extends beyond traditional anomaly detection to provide actionable maintenance recommendations."",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The system uses vector embeddings and semantic search to retrieve procedural knowledge from maintenance manuals and web searches to access up-to-date maintenance practices for accurate recommendations."",
+  ""environmental_domain"": ""no"",
+  ""environmental_domain_evidence"": ""The study focuses on industrial machinery maintenance without explicit connection to environmental, ecological, climatic, or sustainability issues."",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Experimental validation in bearing vibration datasets demonstrates effective anomaly detection and contextually relevant maintenance guidance."",
+  ""rag_role"": ""central""
+}"
+C12,R0455,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,Uses retrieval-augmented generation (RAG) for butterfly classification,yes,Addresses biodiversity conservation and ecological monitoring in Indonesia,yes,Reports 120 classification sessions with 85% accuracy and field completeness,central,include,,ok,,35.39,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Uses retrieval-augmented generation (RAG) for butterfly classification"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses biodiversity conservation and ecological monitoring in Indonesia"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Reports 120 classification sessions with 85% accuracy and field completeness"",
+  ""rag_role"": ""central""
+}"
+C13,R0141,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,Integrates keyword-based grant discovery with RAG system to semantically interpret local planning documents,yes,Addresses environmentally threatened rural communities in Alaska,unclear,Provides foundation for future evaluation and deployment but does not report current empirical evaluation,central,maybe,,ok,,34.69,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Integrates keyword-based grant discovery with RAG system to semantically interpret local planning documents"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses environmentally threatened rural communities in Alaska"",
+  ""empirical_evaluation"": ""unclear"",
+  ""empirical_evaluation_evidence"": ""Provides foundation for future evaluation and deployment but does not report current empirical evaluation"",
+  ""rag_role"": ""central""
+}"
+C14,R0073,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,Framework combines retrieval-augmented generation (RAG) with rule-constrained reasoning,unclear,Mentions environmental conditions in vehicle testing scenarios,yes,Experimental validation demonstrates superior performance in compliance accuracy (F1-score: 0.94) and scenario coverage (89.7%),central,maybe,,ok,,35.63,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Framework combines retrieval-augmented generation (RAG) with rule-constrained reasoning"",
+  ""environmental_domain"": ""unclear"",
+  ""environmental_domain_evidence"": ""Mentions environmental conditions in vehicle testing scenarios"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Experimental validation demonstrates superior performance in compliance accuracy (F1-score: 0.94) and scenario coverage (89.7%)"",
+  ""rag_role"": ""central""
+}"
+C15,R0486,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,"The record describes a developed system for navigating Earth System Data using domain-specific LLMs, with implementation details and evaluation metrics.",yes,"The study integrates retrieval-augmented generation to ground responses in ESGF and CMIP metadata, using retrieved information to enhance the LLM's responses.",unclear,"The record mentions Earth System Science and ESGF data, but does not explicitly state a substantive environmental issue like climate adaptation or emissions.",yes,"Evaluation using expert review and BERTScore shows the finetuned model significantly outperforms its untuned counterpart in accuracy, contextual relevance, and usability.",central,maybe,,ok,,47.91,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""The record describes a developed system for navigating Earth System Data using domain-specific LLMs, with implementation details and evaluation metrics."",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The study integrates retrieval-augmented generation to ground responses in ESGF and CMIP metadata, using retrieved information to enhance the LLM's responses."",
+  ""environmental_domain"": ""unclear"",
+  ""environmental_domain_evidence"": ""The record mentions Earth System Science and ESGF data, but does not explicitly state a substantive environmental issue like climate adaptation or emissions."",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Evaluation using expert review and BERTScore shows the finetuned model significantly outperforms its untuned counterpart in accuracy, contextual relevance, and usability."",
+  ""rag_role"": ""central""
+}"
+C16,R0143,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,System employs retrieval-augmented generation for semantic retrieval and sustainability-aware ranking,yes,"Addresses sustainability considerations including carbon emissions, overtourism, and pressure on local communities",yes,Demonstrations on the TourPedia dataset illustrate feasibility,central,include,,ok,,30.10,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""System employs retrieval-augmented generation for semantic retrieval and sustainability-aware ranking"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses sustainability considerations including carbon emissions, overtourism, and pressure on local communities"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Demonstrations on the TourPedia dataset illustrate feasibility"",
+  ""rag_role"": ""central""
+}"
+C17,R0196,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is Article,yes,The Embodied Graph serves as a retrievable knowledge base for Retrieval-Augmented Generation (RAG),no,The study focuses on outdoor navigation for autonomous robots without explicit environmental sustainability or climate-related issues,yes,Extensive experiments in both simulation and real-world settings demonstrate superior robustness and efficiency,central,exclude,CE2,ok,,32.74,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is Article"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""The Embodied Graph serves as a retrievable knowledge base for Retrieval-Augmented Generation (RAG)"",
+  ""environmental_domain"": ""no"",
+  ""environmental_domain_evidence"": ""The study focuses on outdoor navigation for autonomous robots without explicit environmental sustainability or climate-related issues"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Extensive experiments in both simulation and real-world settings demonstrate superior robustness and efficiency"",
+  ""rag_role"": ""central""
+}"
+C18,R0255,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,Custom in-house Retrieval-Augmented Generation (RAG) framework supports context-aware queries and analyses,yes,Addresses sustainability indicators for building materials and environmental impacts,yes,Results demonstrate improved data quality and decision making,central,include,,ok,,29.39,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Custom in-house Retrieval-Augmented Generation (RAG) framework supports context-aware queries and analyses"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses sustainability indicators for building materials and environmental impacts"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Results demonstrate improved data quality and decision making"",
+  ""rag_role"": ""central""
+}"

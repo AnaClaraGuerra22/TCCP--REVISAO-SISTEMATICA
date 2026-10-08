@@ -1,0 +1,56 @@
+﻿calibration_id,record_id,model_name,model_id,prompt_version,primary_study,primary_study_evidence,operational_rag,operational_rag_evidence,environmental_domain,environmental_domain_evidence,empirical_evaluation,empirical_evaluation_evidence,rag_role,derived_decision,derived_reason_code,status,validation_errors,elapsed_seconds,raw_response
+C02,R0028,qwen3:4b,359d7dd4bcda,v1.2-candidate,no,Document type: Review,yes,Retrieval-augmented generation is mentioned as a key technology,no,Environmental costs are mentioned but not as a substantive environmental issue,no,No experiments or quantitative metrics reported,baseline_or_comparator,exclude,CE3,ok,,59.78,"{
+  ""primary_study"": ""no"",
+  ""primary_study_evidence"": ""Document type: Review"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Retrieval-augmented generation is mentioned as a key technology"",
+  ""environmental_domain"": ""no"",
+  ""environmental_domain_evidence"": ""Environmental costs are mentioned but not as a substantive environmental issue"",
+  ""empirical_evaluation"": ""no"",
+  ""empirical_evaluation_evidence"": ""No experiments or quantitative metrics reported"",
+  ""rag_role"": ""baseline_or_comparator""
+}"
+C03,R0133,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,RAG retrieves pertinent historical and geographical data and incorporates it into the model context,yes,Addresses wildfire prediction which is a climate-related environmental issue,yes,"Reports performance metrics including Accuracy-93.40%, Precision-91.78%, Recall-88.96%, F1 Score-90.35%, AUC-ROC-96.04%, and IoU-81.71%",central,include,,ok,,40.33,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""RAG retrieves pertinent historical and geographical data and incorporates it into the model context"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses wildfire prediction which is a climate-related environmental issue"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Reports performance metrics including Accuracy-93.40%, Precision-91.78%, Recall-88.96%, F1 Score-90.35%, AUC-ROC-96.04%, and IoU-81.71%"",
+  ""rag_role"": ""central""
+}"
+C05,R0277,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,Uses Retrieval-Augmented Generation (RAG) with need-oriented environmental knowledge base,yes,Addresses embodied navigation in virtual environments with environmental knowledge,yes,Evaluated using OpenEQA-based VirtualHome dataset and compared with LLM-based approach,central,include,,ok,,26.97,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Uses Retrieval-Augmented Generation (RAG) with need-oriented environmental knowledge base"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses embodied navigation in virtual environments with environmental knowledge"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Evaluated using OpenEQA-based VirtualHome dataset and compared with LLM-based approach"",
+  ""rag_role"": ""central""
+}"
+C08,R0394,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Record describes a multi-branch deep learning model design and experimental results with a dataset,no,"Uses Relation-Aware Graph (RAG) attention mechanisms, which is explicitly defined as a different concept",unclear,Mentions wildlife conservation and biodiversity protection but does not specify substantive environmental issues,yes,Reports mean absolute error (MAE) of 2.42 on the MFBPAD dataset,not_applicable,exclude,CE1,ok,,33.62,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Record describes a multi-branch deep learning model design and experimental results with a dataset"",
+  ""operational_rag"": ""no"",
+  ""operational_rag_evidence"": ""Uses Relation-Aware Graph (RAG) attention mechanisms, which is explicitly defined as a different concept"",
+  ""environmental_domain"": ""unclear"",
+  ""environmental_domain_evidence"": ""Mentions wildlife conservation and biodiversity protection but does not specify substantive environmental issues"",
+  ""empirical_evaluation"": ""yes"",
+  ""empirical_evaluation_evidence"": ""Reports mean absolute error (MAE) of 2.42 on the MFBPAD dataset"",
+  ""rag_role"": ""not_applicable""
+}"
+C13,R0141,qwen3:4b,359d7dd4bcda,v1.2-candidate,yes,Document type is conference paper,yes,Integrates keyword-based grant discovery with RAG system to semantically interpret local planning documents,yes,Addresses environmentally threatened rural communities in Alaska,unclear,Provides foundation for future evaluation and deployment but does not report current empirical evaluation,central,maybe,,ok,,26.61,"{
+  ""primary_study"": ""yes"",
+  ""primary_study_evidence"": ""Document type is conference paper"",
+  ""operational_rag"": ""yes"",
+  ""operational_rag_evidence"": ""Integrates keyword-based grant discovery with RAG system to semantically interpret local planning documents"",
+  ""environmental_domain"": ""yes"",
+  ""environmental_domain_evidence"": ""Addresses environmentally threatened rural communities in Alaska"",
+  ""empirical_evaluation"": ""unclear"",
+  ""empirical_evaluation_evidence"": ""Provides foundation for future evaluation and deployment but does not report current empirical evaluation"",
+  ""rag_role"": ""central""
+}"

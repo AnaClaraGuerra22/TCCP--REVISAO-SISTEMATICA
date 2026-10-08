@@ -56,12 +56,12 @@ PROMPT_FILE = (
 
 OUTPUT_FILE = (
     CALIBRATION_DIR
-    / "llm_prescreen_calibration_qwen3_4b_test5.csv"
+    / "llm_prescreen_calibration_qwen3_4b_full18.csv"
 )
 
 RUN_METADATA_FILE = (
     CALIBRATION_DIR
-    / "calibration_run_metadata_qwen3_4b_test5.txt"
+    / "calibration_run_metadata_qwen3_4b_full18.txt"
 )
 
 def clean(value):
@@ -293,28 +293,13 @@ df = pd.read_csv(
     keep_default_na=False
 )
 
-TEST_IDS = {
-    "C02",
-    "C03",
-    "C05",
-    "C08",
-    "C13",
-}
-
-df = df[
-    df["calibration_id"].isin(TEST_IDS)
-].copy()
-
-df = df.sort_values(
-    "calibration_id"
-).reset_index(drop=True)
 
 
 
 
-if len(df) != 5:
+if len(df) != 18:
     raise ValueError(
-        f"Esperados 5 registros de teste, "
+        f"Esperados 18 registros de calibração, "
         f"mas foram encontrados {len(df)}."
     )
 
