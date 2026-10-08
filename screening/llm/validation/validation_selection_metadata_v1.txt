@@ -1,0 +1,42 @@
+INDEPENDENT VALIDATION SAMPLE — v1
+
+Created at: 2026-10-08T14:06:28.070211-03:00
+
+SOURCE DATA
+
+All records file: records_deduplicated.csv
+All records SHA256: 53d24a8157670337e7f27b8f5fd9b02c70f5350478d77ec93b451e2fc18b2860
+Total deduplicated records: 587
+
+DEVELOPMENT/CALIBRATION SET
+
+Calibration file: calibration_blind_v1.csv
+Calibration SHA256: ea41dbda1582e45bfbafcf808a9cd76bd6fe30ecf63e9005db3e513c3a391fe6
+Calibration records excluded: 18
+
+VALIDATION SAMPLING
+
+Candidate pool after calibration exclusion: 569
+Validation sample size: 30
+Random seed: 20261008
+Sampling method: pandas.DataFrame.sample
+Replacement: no
+
+OUTPUT
+
+Validation file: validation_blind_v1.csv
+Validation SHA256: 015679f23a17682408c9c372b4b827ee46286108437ae556c011f17e2e175b74
+Validation records: 30
+
+BLINDING
+
+Human decisions included: NO
+LLM outputs included: NO
+Calibration records included: NO
+
+IMPORTANT
+
+This sample is reserved for independent validation of the
+LLM-assisted title/abstract screening procedure.
+
+The 18 development/calibration records were excluded before sampling.
