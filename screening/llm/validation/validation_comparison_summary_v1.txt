@@ -1,0 +1,71 @@
+QWEN3:4B VALIDATION COMPARISON - v1
+
+VALIDATION SET
+
+Records: 30
+
+HUMAN REFERENCE DISTRIBUTION
+
+include: 5
+maybe: 6
+exclude: 19
+
+QWEN DISTRIBUTION
+
+include: 11
+maybe: 2
+exclude: 17
+
+THREE-CLASS AGREEMENT
+
+Exact matches: 22/30
+Exact agreement: 0.7333
+Exact agreement (%): 73.3%
+
+Cohen's kappa: 0.5294
+
+SCREENING SAFETY
+
+Human include: 5
+Human maybe: 6
+Human retained (include + maybe): 11
+
+Human include -> Qwen exclude: 0
+Human maybe -> Qwen exclude: 0
+
+False exclusions among human-retained: 0
+
+Retained correctly by Qwen: 11/11
+
+Retention sensitivity: 1.0000
+Retention sensitivity (%): 100.0%
+
+EXCLUSION CODE AGREEMENT
+
+Human exclude: 19
+Both human and Qwen exclude: 17
+Exact CE matches among joint exclusions: 15/17
+CE exact agreement: 0.8824
+CE exact agreement (%): 88.2%
+
+VALIDATION GATE
+
+G1 - 30 structurally valid outputs:
+PASS
+
+G2 - Human include -> Qwen exclude = 0:
+PASS
+
+G3 - Retention sensitivity >= 0.90:
+PASS
+
+FINAL GATE:
+PASS
+
+CONFUSION MATRIX
+
+Qwen     include  maybe  exclude
+Human                           
+include        4      1        0
+maybe          5      1        0
+exclude        2      0       17

@@ -1,0 +1,37 @@
+HUMAN VALIDATION REFERENCE — v1
+
+Created: 2026-10-08T15:00:42.305320-03:00
+
+SOURCE
+File: validation_human_v1.xlsm
+SHA256: c2fcf7cbb75a8247d9af3784a1830217f787384108f0c4df30f8548c78e7a2c7
+Worksheet: Validação Humana
+
+REFERENCE SNAPSHOT
+File: validation_human_reference_v1.csv
+SHA256: 97a25fa47abf2fd6219104d0dc56ba7d202cc2bcf909c81733890b16ccc9da53
+
+VALIDATION SET
+Records: 30
+
+DECISIONS
+include: 5
+maybe: 6
+exclude: 19
+
+EXCLUSION CODES
+CE1: 3
+CE2: 13
+CE3: 3
+CE4: 0
+
+STATUS
+Human/reference decisions finalized before inspection of Qwen3:4B
+validation outputs.
+
+The XLSM file is preserved as the reviewer-facing source.
+The CSV snapshot is used only for deterministic comparison.
+
+IMPORTANT
+No Qwen3:4B validation output had been consulted when these
+reference decisions were finalized.

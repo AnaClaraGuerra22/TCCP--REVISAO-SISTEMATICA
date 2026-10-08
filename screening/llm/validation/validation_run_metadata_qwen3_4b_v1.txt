@@ -1,0 +1,70 @@
+LLM VALIDATION RUN — v1
+
+Run type: blind criterion-based validation
+
+Run started: 2026-10-08T15:36:51.897617-03:00
+Run finished: 2026-10-08T15:59:26.376879-03:00
+
+MODEL
+
+Model name: qwen3:4b
+Model ID: 359d7dd4bcda
+Runtime: Ollama
+Temperature: 0
+Seed: 42
+Thinking: false
+Structured output: JSON
+
+PROMPT
+
+Prompt version: v1.2-candidate
+Prompt file: llm_screening_prompt_v1_2_candidate.txt
+Prompt SHA256: cfac438781c32ec3672dcfb1191149629a4cb23b133646c482d5165696ad19c4
+
+INPUT
+
+Input file: validation_blind_v1.csv
+Input SHA256: 015679f23a17682408c9c372b4b827ee46286108437ae556c011f17e2e175b74
+Expected records: 30
+Processed records: 30
+
+DECISION ARCHITECTURE
+
+LLM role:
+criterion-level semantic assessment only.
+
+Software role:
+deterministic derivation of include/exclude/maybe
+from criterion-level outputs.
+
+Human role:
+all official screening decisions remain human.
+
+RESULT
+
+Successful outputs: 30
+Outputs with error: 0
+
+include: 11
+exclude: 17
+maybe: 2
+
+CE1: 1
+CE2: 12
+CE3: 3
+CE4: 1
+
+Total execution seconds: 1354.48
+
+IMPORTANT
+
+Human reference decisions were not provided to the model.
+
+The LLM did not directly generate the final screening
+classification.
+
+The derived decision was generated deterministically
+by Python from the LLM criterion assessments.
+
+All outputs remain decision-support suggestions.
+Official eligibility decisions remain human.

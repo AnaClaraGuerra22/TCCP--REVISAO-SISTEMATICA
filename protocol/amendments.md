@@ -24,36 +24,95 @@ protocolo preliminar e a versão congelada.
 | 2026-10-06 | v1.0 | v1.0 + amendment | Adição de pré-triagem assistida por LLM no screening de título e resumo. O LLM será utilizado exclusivamente como ferramenta de apoio, fornecendo uma sugestão de classificação (`include`, `exclude` ou `maybe`), código de exclusão quando aplicável, nível de confiança e justificativa curta. A decisão oficial continuará sendo realizada pela revisora. O modelo e o prompt serão congelados somente após calibração prévia utilizando os 18 registros da calibração intra-revisora. Nenhum registro será excluído automaticamente com base apenas na saída do LLM. | Reduzir a carga operacional do screening de título e resumo, considerando a condução da revisão por uma única revisora e o volume de 587 registros deduplicados, preservando controle humano sobre todas as decisões de elegibilidade. | Não altera as perguntas de pesquisa, os critérios `CI1–CI6` e `CE1–CE7`, as regras de fronteira, as bases bibliográficas, as strings de busca ou o corpus recuperado. Introduz apenas uma ferramenta de apoio ao screening, com validação prévia, versionamento e rastreabilidade das saídas. |
 
 | 2026-10-07 | v1.0 + amendment | v1.0 + amendment | Refinamento da pré-triagem assistida por LLM: comparação de Qwen3:8B, Llama 3.2 3B e Qwen3:4B nos 18 registros do conjunto de desenvolvimento/calibração e substituição da classificação direta pelo LLM por uma arquitetura criterial. Na nova arquitetura, o modelo avalia separadamente os critérios de estudo primário, RAG operacional, domínio ambiental, avaliação empírica e papel do RAG; uma regra determinística em Python deriva posteriormente a sugestão `include`, `exclude` ou `maybe` e o código de exclusão aplicável. O Qwen3:4B foi selecionado como candidato operacional para a etapa de validação independente. | A classificação direta apresentou comportamento excessivamente permissivo nas versões iniciais do prompt, enquanto a decomposição por critérios tornou explícita e auditável a origem das sugestões. Entre os modelos locais avaliados, o Qwen3:4B apresentou melhor equilíbrio entre desempenho computacional e preservação de sensibilidade: processou os 18 registros em 722,31 segundos, sem classificar como `exclude` nenhum dos seis registros classificados como `include` pela revisora no conjunto de desenvolvimento. | Altera apenas a implementação da assistência por LLM no screening. Não modifica `CI1–CI6`, `CE1–CE7`, regras de fronteira, estratégia de busca ou autoridade da decisão humana. Os 18 registros passam a ser tratados como conjunto de desenvolvimento/calibração e não serão usados como evidência independente de validação. Antes da aplicação operacional, o procedimento será avaliado em uma nova amostra cega de validação. |
-
+| 2026-10-08 | v1.0 + amendment | v1.0 + amendment | Finalização da amostra de validação da assistência por LLM. As decisões de referência dos 30 registros foram finalizadas pela revisora antes da exposição às saídas do Qwen3:4B. Durante a aplicação dos critérios, casos foram discutidos com ChatGPT como apoio de adjudicação protocolar; portanto, o conjunto é tratado como referência finalizada pela revisora com apoio protocolar, e não como classificação humana totalmente independente de ferramentas de IA. | Preservar transparência sobre a formação das decisões de referência utilizadas para avaliar o Qwen3:4B, sem ocultar o uso de apoio durante casos de fronteira. | Não altera CI1–CI6, CE1–CE7, regras de fronteira, amostra de validação ou decisões finais da revisora. O Qwen3:4B permaneceu cego às decisões de referência durante a inferência de validação. |
+| 2026-10-08 | v1.0 + amendment | v1.0 + amendment | Validação cega do procedimento de pré-triagem assistida por LLM em uma nova amostra de 30 registros, não utilizada no desenvolvimento ou calibração do procedimento de screening assistido. O modelo processou os 30 registros sem erros e apresentou concordância exata de 73,3% (22/30), Cohen's kappa de 0,5294 e sensibilidade de retenção de 100% (11/11 registros classificados pela referência como `include` ou `maybe` não foram sugeridos como `exclude`). Não ocorreu nenhum caso `human include -> Qwen exclude` nem `human maybe -> Qwen exclude`. Entre os 17 registros excluídos por ambos, houve concordância do código CE em 15 (88,2%). O gate previamente definido foi atendido em todos os critérios e o Qwen3:4B + arquitetura criterial v1.2 foi aprovado para uso operacional como ferramenta de apoio ao screening. | Verificar em dados não utilizados no desenvolvimento/calibração do procedimento se a assistência por LLM preserva a sensibilidade necessária ao screening e não produz falsas exclusões de estudos potencialmente elegíveis. | Autoriza a aplicação operacional da configuração validada como apoio à revisora. Não autoriza exclusões automáticas e não altera CI1–CI6, CE1–CE7, regras de fronteira ou autoridade da decisão humana. |
 
 ---
 
 ## Uso de LLM no screening de título e resumo
 
-A partir do conjunto deduplicado da busca definitiva (`n = 587`), será utilizada uma ferramenta baseada em Large Language Model (LLM) como apoio à etapa de screening de título e resumo.
+A partir do conjunto deduplicado da busca definitiva (`n = 587`), será
+utilizada uma ferramenta baseada em Large Language Model (LLM) como apoio
+à etapa de screening de título e resumo.
 
-O LLM atuará exclusivamente como mecanismo de pré-classificação. Para cada registro, receberá apenas informações provenientes dos arquivos bibliográficos recuperados nas bases da revisão, como título, resumo, palavras-chave e tipo de documento, quando disponíveis.
+A configuração operacional validada utiliza:
 
-A saída esperada será uma sugestão de:
+- modelo `qwen3:4b`;
+- execução local via Ollama;
+- prompt `v1.2-operational`, promovido sem alteração de conteúdo a partir de `v1.2-candidate`;
+- `temperature = 0`;
+- `seed = 42`;
+- `thinking = false`;
+- saída estruturada em JSON.
+
+O prompt operacional é byte a byte idêntico ao prompt validado, ambos com SHA-256 `cfac438781c32ec3672dcfb1191149629a4cb23b133646c482d5165696ad19c4`.
+
+O LLM não produz diretamente a decisão final de screening.
+
+Para cada registro, recebe apenas informações provenientes dos metadados
+bibliográficos recuperados pelas bases da revisão, como título, resumo,
+palavras-chave e tipo de documento, quando disponíveis.
+
+O modelo avalia separadamente:
+
+- se o registro representa estudo primário;
+- se há Retrieval-Augmented Generation operacional;
+- se o domínio ambiental ou de sustentabilidade ambiental é substantivo;
+- se existe avaliação empírica;
+- qual é o papel do RAG no estudo.
+
+As avaliações são expressas por categorias controladas
+(`yes`, `no`, `unclear` e, para o papel do RAG, categorias específicas).
+
+Uma regra determinística implementada em Python transforma essas
+avaliações criteriais em uma sugestão de:
 
 - `include`;
 - `exclude`; ou
-- `maybe`.
+- `maybe`;
 
-Nos casos de sugestão de exclusão, o modelo poderá indicar um código de exclusão aplicável à etapa de título e resumo (`CE1–CE4`), acompanhado de uma justificativa curta e nível de confiança.
+e, quando aplicável, em um código de exclusão `CE1–CE4`.
 
-A ferramenta não será considerada um segundo revisor independente e nenhuma exclusão será realizada automaticamente com base exclusivamente em sua saída.
+A ferramenta não é considerada um segundo revisor independente e nenhuma
+exclusão será realizada automaticamente com base exclusivamente em sua
+saída.
 
-Todas as decisões formais de elegibilidade continuarão sob responsabilidade da revisora e serão registradas separadamente em `screening/decision_log.csv`.
+Todas as decisões formais de elegibilidade continuarão sob
+responsabilidade da revisora e serão registradas em
+`screening/decision_log.csv`.
 
-Antes da aplicação aos 587 registros, o procedimento será calibrado utilizando os 18 registros previamente empregados na calibração intra-revisora. Durante essa etapa, o LLM não terá acesso às decisões humanas previamente atribuídas.
+O desenvolvimento da assistência por LLM utilizou 18 registros da
+calibração inicial. Esses registros foram tratados exclusivamente como
+conjunto de desenvolvimento e não como evidência independente de
+validação.
 
-Após a avaliação da calibração, o prompt, o modelo e os parâmetros de execução serão congelados e aplicados de forma uniforme a todos os registros.
+Antes da aplicação operacional, o Qwen3:4B foi avaliado em uma nova
+amostra cega de 30 registros. A referência foi finalizada antes da
+inspeção das saídas do Qwen. Durante a classificação da referência,
+casos foram discutidos com ChatGPT como apoio de adjudicação protocolar;
+por esse motivo, essa referência não é caracterizada como uma
+classificação humana totalmente independente de ferramentas de IA.
 
-Na presença de informação insuficiente ou ambígua, a orientação ao modelo será favorecer a classificação `maybe`, evitando exclusões precoces potencialmente incorretas.
+Na validação, foram obtidos:
 
-Nenhuma informação externa, busca na Web ou web scraping será utilizada pelo LLM durante essa etapa.
+- 22/30 decisões exatamente concordantes (73,3%);
+- Cohen's kappa = 0,5294;
+- 0 casos `human include -> Qwen exclude`;
+- 0 casos `human maybe -> Qwen exclude`;
+- sensibilidade de retenção = 11/11 (100%);
+- concordância do código CE em 15/17 exclusões conjuntas (88,2%).
 
+Todos os critérios do gate definido previamente foram atendidos.
+
+Consequentemente, o Qwen3:4B com a arquitetura criterial v1.2 foi
+aprovado para uso operacional como ferramenta de apoio ao screening.
+
+Na presença de informação insuficiente ou ambígua, permanece o princípio
+do protocolo de favorecer retenção para avaliação humana em vez de
+exclusão por inferência.
+
+Nenhuma informação externa, busca na Web ou web scraping será utilizada
+pelo modelo durante essa etapa.
 
 ## Regras de preenchimento
 

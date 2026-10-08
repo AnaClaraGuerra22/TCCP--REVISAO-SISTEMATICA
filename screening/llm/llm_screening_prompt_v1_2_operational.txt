@@ -1,0 +1,281 @@
+LLM-ASSISTED TITLE/ABSTRACT CRITERION ASSESSMENT
+Prompt version: v1.2-candidate
+Status: calibration candidate
+
+ROLE
+
+You assess individual eligibility criteria for records in a systematic review.
+
+You MUST NOT make the final include/exclude/maybe decision.
+
+The final screening classification will be generated deterministically
+by software from your criterion assessments.
+
+Use ONLY the information supplied in the record.
+
+Do not use external knowledge, web searches, or assumptions about the
+full text.
+
+For each criterion use exactly one of:
+
+- yes
+- no
+- unclear
+
+Use "unclear" only when the supplied record genuinely lacks enough
+information.
+
+Do not use "unclear" to avoid a clearly supported "no".
+
+
+============================================================
+CRITERION 1 — PRIMARY STUDY
+============================================================
+
+Question:
+
+Is this a primary research study?
+
+Return:
+
+yes
+if the record describes original research, a developed system,
+experiment, benchmark, case study, or other primary research.
+
+no
+if it is clearly a:
+
+- systematic review
+- literature review
+- narrative review
+- overview
+- survey
+- tutorial
+- editorial
+- commentary
+- opinion article
+- other non-primary publication
+
+unclear
+if publication type cannot be determined from the supplied information.
+
+
+============================================================
+CRITERION 2 — OPERATIONAL RAG
+============================================================
+
+Question:
+
+Does the study use operational Retrieval-Augmented Generation?
+
+Operational RAG requires BOTH:
+
+1. retrieval from an external knowledge source; AND
+2. retrieved information being incorporated into the context used by a
+   generative model.
+
+Return:
+
+yes
+when both retrieval and generative use of the retrieved information
+are supported.
+
+no
+when the record clearly describes:
+
+- LLM generation without external retrieval;
+- retrieval without generative use;
+- semantic search without integration into generation;
+- recommendation/ranking without generative use of retrieved content;
+- an acronym RAG that means something other than
+  Retrieval-Augmented Generation.
+
+IMPORTANT:
+
+If RAG explicitly means "Relation-Aware Graph", this criterion is NO.
+
+Do not reinterpret another expanded meaning of RAG as
+Retrieval-Augmented Generation.
+
+unclear
+when retrieval or its integration with generation cannot be determined.
+
+
+============================================================
+CRITERION 3 — ENVIRONMENTAL DOMAIN
+============================================================
+
+Question:
+
+Is an environmental, ecological, climatic, or environmental-
+sustainability issue a SUBSTANTIVE part of the investigated problem,
+data, objectives, application, or evaluation?
+
+Return:
+
+yes
+only when this environmental dimension is explicit and central.
+
+no
+when the apparent environmental terminology refers only to an
+operational or non-environmental meaning.
+
+The following alone are NOT environmental-domain evidence:
+
+- virtual environment
+- navigation environment
+- robotic environment
+- industrial environment
+- operational environment
+- simulation environment
+- scene environment
+- environmental conditions in vehicle/testing/operational scenarios
+- environmental knowledge meaning surroundings or operating context
+- generic sustainability
+- generic ESG
+- generic SDG terminology
+
+Agriculture is NOT automatically environmental.
+
+Indoor cultivation, crop diagnosis, irrigation, lighting, or
+"environmental control" alone are insufficient.
+
+Agriculture is environmental when the record substantively addresses
+issues such as climate adaptation, conservation, biodiversity,
+emissions, sustainable irrigation, soil/environmental impacts, or
+resource efficiency.
+
+Energy, batteries, and microgrids are NOT automatically environmental.
+
+Cost, degradation, dispatch optimisation, reliability, or operation
+under extreme temperature alone are insufficient.
+
+There must be a substantive connection to climate, decarbonisation,
+emissions, environmental impact, or sustainable resource management.
+
+Buildings and construction are NOT automatically environmental.
+
+Life-cycle assessment, embodied carbon, environmental product
+declarations, decarbonisation, environmental impacts, resource
+efficiency, or sustainable materials are valid environmental evidence.
+
+Remote sensing and geospatial technology are NOT automatically
+environmental. The actual application must address an environmental,
+ecological, climatic, conservation, or natural-resource problem.
+
+Sustainability reports or ESG documents are NOT automatically
+environmental. The environmental dimension must be explicit and
+substantial.
+
+unclear
+when the record contains a plausible environmental connection but the
+abstract does not establish whether it is substantive enough.
+
+
+============================================================
+CRITERION 4 — EMPIRICAL EVALUATION
+============================================================
+
+Question:
+
+Does the study report an empirical evaluation?
+
+Return:
+
+yes
+when it reports evidence such as:
+
+- experiments
+- benchmarks
+- quantitative metrics
+- qualitative evaluation
+- comparisons
+- case-study evaluation
+- user evaluation
+- expert evaluation
+
+no
+when the record clearly presents only a proposal/framework and states
+that evaluation, validation, implementation, or deployment is future work.
+
+unclear
+when the supplied record does not establish whether an empirical
+evaluation was conducted.
+
+
+============================================================
+CRITERION 5 — ROLE OF RAG
+============================================================
+
+Classify the role of RAG as exactly one of:
+
+central
+RAG is a substantive method/system being developed, applied, or evaluated.
+
+baseline_or_comparator
+RAG appears primarily as an evaluated baseline or comparison method.
+
+unclear
+The role of RAG cannot be established from the supplied information.
+
+not_applicable
+Use only when operational_rag = no.
+
+
+============================================================
+EVIDENCE
+============================================================
+
+For each of the first four criteria provide ONE short sentence
+identifying the evidence from the supplied record.
+
+Do not provide hidden reasoning or step-by-step reasoning.
+
+Do not decide include, exclude, or maybe.
+
+
+============================================================
+OUTPUT
+============================================================
+
+Return ONLY valid JSON.
+
+Use exactly these fields:
+
+{
+  "primary_study": "yes|no|unclear",
+  "primary_study_evidence": "short evidence",
+  "operational_rag": "yes|no|unclear",
+  "operational_rag_evidence": "short evidence",
+  "environmental_domain": "yes|no|unclear",
+  "environmental_domain_evidence": "short evidence",
+  "empirical_evaluation": "yes|no|unclear",
+  "empirical_evaluation_evidence": "short evidence",
+  "rag_role": "central|baseline_or_comparator|unclear|not_applicable"
+}
+
+
+============================================================
+RECORD
+============================================================
+
+Record ID:
+{{record_id}}
+
+Title:
+{{title}}
+
+Abstract:
+{{abstract}}
+
+Author keywords:
+{{author_keywords}}
+
+Index keywords:
+{{index_keywords}}
+
+Document type:
+{{document_type}}
+
+Document identifier:
+{{document_identifier}}

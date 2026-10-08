@@ -1,0 +1,59 @@
+﻿QWEN3:4B VALIDATION GATE - v1
+
+Defined before inspection of validation outputs.
+
+PURPOSE
+
+Evaluate whether Qwen3:4B with the criterion-based screening
+architecture v1.2 is sufficiently conservative to be used as
+decision support during title/abstract screening.
+
+PASS CONDITIONS
+
+G1 - STRUCTURAL VALIDITY
+
+All 30 validation records must produce structurally valid outputs.
+
+G2 - PROTECTION OF HUMAN INCLUDES
+
+Human include -> Qwen exclude = 0.
+
+No record classified as include in the reference decisions may be
+suggested as exclude by Qwen.
+
+G3 - RETENTION SENSITIVITY
+
+Retention sensitivity >= 0.90.
+
+Human retained =
+human_decision in {include, maybe}
+
+Qwen retained =
+llm_decision in {include, maybe}
+
+Retention sensitivity =
+number of human-retained records not classified as exclude by Qwen
+divided by all human-retained records.
+
+DESCRIPTIVE METRICS
+
+The following metrics will also be reported:
+
+- exact three-class agreement;
+- Cohen's kappa;
+- confusion matrix;
+- human maybe -> Qwen exclude;
+- agreement on exclusion codes when both classify exclude.
+
+DECISION RULE
+
+PASS only if G1, G2 and G3 are all satisfied.
+
+The objective of the LLM is decision support with emphasis on
+screening sensitivity, not autonomous exclusion.
+
+No record will be excluded automatically based solely on Qwen output.
+
+If the gate fails, these same 30 validation records must not be used
+to optimize a revised prompt/model and subsequently be presented as
+an independent validation of that revised version.
