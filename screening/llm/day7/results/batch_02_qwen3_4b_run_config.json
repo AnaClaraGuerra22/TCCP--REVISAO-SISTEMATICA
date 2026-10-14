@@ -1,0 +1,17 @@
+{
+  "script_version": "day7-resumable-v1",
+  "batch": 2,
+  "input_file": "screening\\llm\\day7\\batches\\batch_02.csv",
+  "input_sha256": "639dc0af65b95f3d8bb1cd42195e51169816da21430ea89271c4c31f10eb18f6",
+  "prompt_file": "screening\\llm\\llm_screening_prompt_v1_2_operational.txt",
+  "prompt_sha256": "cfac438781c32ec3672dcfb1191149629a4cb23b133646c482d5165696ad19c4",
+  "prompt_version": "v1.2-operational",
+  "model_name": "qwen3:4b",
+  "model_digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+  "temperature": 0,
+  "seed": 42,
+  "think": false,
+  "format": "json",
+  "expected_records": 180,
+  "started_at": "2026-10-13T18:25:12-03:00"
+}

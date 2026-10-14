@@ -1,0 +1,272 @@
+﻿
+
+@'
+# Dia 7 — Triagem Formal Assistida por LLM
+
+## 1. Identificação
+
+- Data de início: 13/10/2026
+- Etapa: Title/Abstract Screening
+- Protocolo: v1.0 (congelado em 06/10/2026)
+- Modelo: Qwen3:4B
+- Runtime: Ollama
+- Prompt: v1.2-operational
+- Temperature: 0
+- Seed: 42
+- Thinking: false
+
+## 2. Situação inicial
+
+- Registros após deduplicação: 587
+- Decisões humanas consolidadas: 47
+  - Include: 11
+  - Exclude: 26
+  - Maybe: 10
+- Registro pendente de consenso: R0141
+- Registros sem avaliação humana prévia: 539
+
+As 47 decisões foram recuperadas das etapas de
+calibração e validação e incorporadas ao decision_log.csv.
+
+O artigo R0141 foi reservado para resolução da
+divergência entre as rodadas A e B da calibração.
+
+## 3. Preparação dos lotes
+
+- Lote 01: 180 registros
+- Lote 02: 180 registros
+- Lote 03: 179 registros
+
+Arquivos de entrada:
+screening/llm/day7/batches/
+
+## 4. Validação da configuração
+
+A checagem do primeiro lote retornou PASS.
+
+SHA-256 do prompt:
+cfac438781c32ec3672dcfb1191149629a4cb23b133646c482d5165696ad19c4
+
+O modelo local e o prompt foram verificados pelo
+script antes do início da execução.
+
+## 5. Execução dos lotes
+
+### Lote 01 — Concluido
+
+**Data:** 13/10/2026
+
+**Etapa:** Pre-triagem assistida por LLM, com base em titulo e resumo.
+
+**Configuracao experimental:**
+- Modelo: qwen3:4b
+- Model digest: 359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7
+- Runtime: Ollama
+- Prompt: v1.2-operational
+- Temperature: 0
+- Seed: 42
+- Thinking: false
+- Formato de saida: JSON
+- Inicio registrado: 2026-10-13T15:29:58-03:00
+- Ultimo registro processado: 2026-10-13T17:50:01-03:00
+
+**Resultados:**
+
+| Indicador | Resultado |
+|---|---:|
+| Registros previstos | 180 |
+| Registros processados | 180 |
+| Saidas validas | 180 (100%) |
+| Falhas de validacao | 0 |
+| Erros de execucao | 0 |
+| Sugestoes include | 65 (36,1%) |
+| Sugestoes exclude | 77 (42,8%) |
+| Sugestoes maybe | 38 (21,1%) |
+| Duracao da sessao | 8403,0 segundos |
+
+**Distribuicao dos codigos de exclusao sugeridos:**
+
+| Codigo | Quantidade |
+|---|---:|
+| CE1 | 1 |
+| CE2 | 55 |
+| CE3 | 21 |
+| CE4 | 0 |
+| Total | 77 |
+
+**Rastreabilidade:**
+
+- Arquivo de entrada: screening/llm/day7/batches/batch_01.csv
+- Arquivo de resultados: screening/llm/day7/results/batch_01_qwen3_4b_results.csv
+- Configuracao: screening/llm/day7/results/batch_01_qwen3_4b_run_config.json
+- SHA256 entrada: 4C267CAA92FC4F64D17B5027D7CE9C3BD49C9A4410880376106B9051017C7C2C
+- SHA256 resultado: B134E50991010EB52BE18FD67607C72AA91C275CEC1FB915CFF81FA0C2663249
+- SHA256 prompt: cfac438781c32ec3672dcfb1191149629a4cb23b133646c482d5165696ad19c4
+
+**Integridade e limitacoes:**
+
+Todos os 180 registros produziram saidas validas.
+Nao ocorreram falhas de validacao ou execucao.
+
+As classificacoes foram derivadas deterministicamente
+pelo Python a partir das avaliacoes criterio a criterio
+produzidas pelo Qwen3:4B.
+
+Os resultados representam sugestoes automatizadas.
+Nao constituem decisoes finais de elegibilidade.
+
+Nenhuma decisao humana do decision_log.csv foi
+modificada durante esta execucao.
+
+A revisao humana dos 180 registros permanece pendente.
+
+### Lote 02 — Concluido
+
+**Data:** 13/10/2026
+
+**Configuracao experimental:**
+- Modelo: qwen3:4b
+- Model digest: 359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7
+- Runtime: Ollama
+- Prompt: v1.2-operational
+- Temperature: 0
+- Seed: 42
+- Thinking: false
+- Formato: JSON
+- Inicio registrado: 2026-10-13T18:25:12-03:00
+- Ultimo registro processado: 2026-10-13T20:46:37-03:00
+
+**Resultados:**
+
+| Indicador | Resultado |
+|---|---:|
+| Registros processados | 180/180 |
+| Saidas validas | 180 (100%) |
+| Falhas de validacao | 0 |
+| Erros de execucao | 0 |
+| Sugestoes include | 70 (38,9%) |
+| Sugestoes exclude | 67 (37,2%) |
+| Sugestoes maybe | 43 (23,9%) |
+| Tempo da sessao | 8484,2 segundos |
+
+**Codigos de exclusao sugeridos:**
+
+| Codigo | Quantidade |
+|---|---:|
+| CE1 | 1 |
+| CE2 | 35 |
+| CE3 | 30 |
+| CE4 | 1 |
+| Total | 67 |
+
+**Rastreabilidade:**
+
+- Entrada: screening/llm/day7/batches/batch_02.csv
+- Resultados: screening/llm/day7/results/batch_02_qwen3_4b_results.csv
+- Configuracao: screening/llm/day7/results/batch_02_qwen3_4b_run_config.json
+- SHA256 entrada: 639DC0AF65B95F3D8BB1CD42195E51169816DA21430EA89271C4C31F10EB18F6
+- SHA256 resultados: ACEBD2EA983D73F81CC70EA428560861A4A3D49AF5B33958F00250B054F08C82
+- SHA256 prompt: cfac438781c32ec3672dcfb1191149629a4cb23b133646c482d5165696ad19c4
+
+**Observacoes metodologicas:**
+
+As 180 avaliacoes foram produzidas sem erros de execucao
+ou validacao.
+
+As classificacoes foram derivadas pelo script Python
+a partir dos criterios avaliados pelo Qwen3:4B.
+
+As sugestoes automatizadas nao representam decisoes
+oficiais de elegibilidade.
+
+Nenhuma decisao humana foi modificada.
+A revisao humana do lote permanece pendente.
+
+### Lote 03 — Concluido
+
+**Data:** 13/10/2026
+
+**Configuracao experimental:**
+- Modelo: qwen3:4b
+- Model digest: 359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7
+- Runtime: Ollama
+- Prompt: v1.2-operational
+- Temperature: 0
+- Seed: 42
+- Thinking: false
+- Formato: JSON
+- Inicio: 2026-10-13T20:50:32-03:00
+- Ultimo registro: 2026-10-13T23:25:39-03:00
+
+**Resultados:**
+
+| Indicador | Resultado |
+|---|---:|
+| Registros processados | 179/179 |
+| Saidas validas | 179 (100%) |
+| Falhas de validacao | 0 |
+| Erros de execucao | 0 |
+| Sugestoes include | 40 |
+| Sugestoes exclude | 107 |
+| Sugestoes maybe | 32 |
+| Tempo da sessao | 9307,3 segundos |
+
+**Codigos de exclusao sugeridos:**
+
+| Codigo | Quantidade |
+|---|---:|
+| CE1 | 1 |
+| CE2 | 90 |
+| CE3 | 15 |
+| CE4 | 1 |
+| Total | 107 |
+
+**Rastreabilidade:**
+
+- Entrada: screening/llm/day7/batches/batch_03.csv
+- Resultados: screening/llm/day7/results/batch_03_qwen3_4b_results.csv
+- Configuracao: screening/llm/day7/results/batch_03_qwen3_4b_run_config.json
+- SHA256 entrada: BF1839FB5E1CB1D933557498A61E0EF8D9D28052BCC80B76FD0CFC2EC124E4F0
+- SHA256 resultados: BDE0E29435D97E98C3340A3EFB69C25A6CA54378D1A78EFC2E96A960AB6AC75E
+- SHA256 prompt: cfac438781c32ec3672dcfb1191149629a4cb23b133646c482d5165696ad19c4
+
+**Observacoes metodologicas:**
+
+Todos os 179 registros foram processados com sucesso.
+
+As classificacoes representam sugestoes automatizadas,
+derivadas deterministicamente dos criterios avaliados
+pelo Qwen3:4B.
+
+Nenhuma decisao humana foi modificada.
+
+A revisao humana dos registros permanece pendente.
+
+## 6. Política de decisão
+
+O LLM realiza avaliação semântica dos critérios
+de elegibilidade.
+
+As sugestões include, exclude e maybe são
+derivadas deterministicamente pelo script Python.
+
+Nenhuma decisão produzida pelo LLM é considerada
+decisão oficial sem avaliação humana.
+
+As decisões oficiais permanecem registradas em:
+screening/decision_log.csv
+
+Casos incertos devem ser preservados para revisão,
+conforme o protocolo v1.0.
+
+## 7. Pendências
+
+- Concluir o processamento do Lote 01.
+- Verificar erros e integridade dos resultados.
+- Realizar revisão humana das sugestões do LLM.
+- Resolver divergência do artigo R0141.
+- Processar os Lotes 02 e 03.
+- Consolidar a triagem formal.
+'@ | Set-Content -Path $arquivo -Encoding UTF8
+
+

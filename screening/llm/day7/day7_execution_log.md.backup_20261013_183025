@@ -1,0 +1,107 @@
+
+
+@'
+# Dia 7 — Triagem Formal Assistida por LLM
+
+## 1. Identificação
+
+- Data de início: 13/10/2026
+- Etapa: Title/Abstract Screening
+- Protocolo: v1.0 (congelado em 06/10/2026)
+- Modelo: Qwen3:4B
+- Runtime: Ollama
+- Prompt: v1.2-operational
+- Temperature: 0
+- Seed: 42
+- Thinking: false
+
+## 2. Situação inicial
+
+- Registros após deduplicação: 587
+- Decisões humanas consolidadas: 47
+  - Include: 11
+  - Exclude: 26
+  - Maybe: 10
+- Registro pendente de consenso: R0141
+- Registros sem avaliação humana prévia: 539
+
+As 47 decisões foram recuperadas das etapas de
+calibração e validação e incorporadas ao decision_log.csv.
+
+O artigo R0141 foi reservado para resolução da
+divergência entre as rodadas A e B da calibração.
+
+## 3. Preparação dos lotes
+
+- Lote 01: 180 registros
+- Lote 02: 180 registros
+- Lote 03: 179 registros
+
+Arquivos de entrada:
+screening/llm/day7/batches/
+
+## 4. Validação da configuração
+
+A checagem do primeiro lote retornou PASS.
+
+SHA-256 do prompt:
+cfac438781c32ec3672dcfb1191149629a4cb23b133646c482d5165696ad19c4
+
+O modelo local e o prompt foram verificados pelo
+script antes do início da execução.
+
+## 5. Execução dos lotes
+
+### Lote 01
+
+- Data de início: 13/10/2026
+- Registros previstos: 180
+- Status: Em andamento
+- Script: run_day7_qwen3_4b.py
+- Salvamento: checkpoint após cada registro
+- Retomada: habilitada
+
+Arquivo de resultados:
+screening/llm/day7/results/batch_01_qwen3_4b_results.csv
+
+Configuração e horário de início:
+screening/llm/day7/results/batch_01_qwen3_4b_run_config.json
+
+Resultados finais: pendentes.
+
+### Lote 02
+
+- Registros previstos: 180
+- Status: Não iniciado
+
+### Lote 03
+
+- Registros previstos: 179
+- Status: Não iniciado
+
+## 6. Política de decisão
+
+O LLM realiza avaliação semântica dos critérios
+de elegibilidade.
+
+As sugestões include, exclude e maybe são
+derivadas deterministicamente pelo script Python.
+
+Nenhuma decisão produzida pelo LLM é considerada
+decisão oficial sem avaliação humana.
+
+As decisões oficiais permanecem registradas em:
+screening/decision_log.csv
+
+Casos incertos devem ser preservados para revisão,
+conforme o protocolo v1.0.
+
+## 7. Pendências
+
+- Concluir o processamento do Lote 01.
+- Verificar erros e integridade dos resultados.
+- Realizar revisão humana das sugestões do LLM.
+- Resolver divergência do artigo R0141.
+- Processar os Lotes 02 e 03.
+- Consolidar a triagem formal.
+'@ | Set-Content -Path $arquivo -Encoding UTF8
