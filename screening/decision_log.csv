@@ -139,7 +139,7 @@
 "R0138","title_abstract","","","",""
 "R0139","title_abstract","","","",""
 "R0140","title_abstract","","","",""
-"R0141","title_abstract","","","",""
+"R0141","title_abstract","exclude","CE4","Estudo que propõe uma arquitetura híbrida de recuperação por palavras-chave e RAG para identificar oportunidades de financiamento de infraestrutura em comunidades rurais ambientalmente vulneráveis. Embora apresente potencial relevância para adaptação climática e descreva componentes técnicos da arquitetura, o resumo não relata avaliação empírica, métricas ou resultados experimentais do sistema. Os autores indicam explicitamente a avaliação e a implantação como trabalhos futuros. Portanto, o estudo é excluído pelo critério CE4, conforme o protocolo v1.0.","2026-10-15"
 "R0142","title_abstract","","","",""
 "R0143","title_abstract","maybe","","Origem: calibracao A/B. A: Sistema multiagente com LLMs, recuperação semântica e componente explícito de sustentabilidade, incluindo impacto ambiental no Sustainable Place Score. Entretanto, o resumo não deixa totalmente claro se há RAG propriamente dito nem se a dimensão ambiental é suficientemente central para inclusão definitiva. B: O estudo apresenta sustentabilidade explícita, incluindo impacto ambiental no Sustainable Place Score, mas o resumo menciona apenas semantic retrieval e não permite confirmar se há Retrieval-Augmented Generation propriamente dito. É necessário verificar no texto completo se a informação recuperada é incorporada ao contexto de geração do LLM.",""
 "R0144","title_abstract","","","",""
