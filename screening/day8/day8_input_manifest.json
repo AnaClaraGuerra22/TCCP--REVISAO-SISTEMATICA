@@ -1,0 +1,19 @@
+{
+  "created_at": "2026-10-14T10:40:01.763189-03:00",
+  "input_sha256": {
+    "search/exports/processed/records_deduplicated.csv": "53d24a8157670337e7f27b8f5fd9b02c70f5350478d77ec93b451e2fc18b2860",
+    "screening/decision_log.csv": "30958aa8656bdd6375a669bc5f4a556fbc7a87b87152edec7040a606e89e3c00",
+    "screening/llm/day7/audit_pilot_v1/pilot_30_humano_cego.csv": "ca93d90f8c4f3460fd3e256461b7bb2f5abf8ef08821190d72b9e661833ae013",
+    "screening/llm/day7/audit_pilot_v1/qwen_539_audited_summary.csv": "fb49e5061e8e4298fb4fcb77d7bb99a6ec55de14d259a4058ce2113b499944f1"
+  },
+  "counts": {
+    "base": 587,
+    "existing_human": 47,
+    "pilot_assisted": 30,
+    "qwen_suggestions": 539,
+    "queue_new": 509,
+    "blocks": 21
+  },
+  "output_file": "screening/day8/triagem_dia8_509_google_planilhas.xlsx",
+  "note": "Planilha nao contem sugestoes do Qwen. Nao altera logs nem protocolo."
+}
