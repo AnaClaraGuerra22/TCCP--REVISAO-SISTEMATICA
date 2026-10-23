@@ -1,20 +1,16 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-Filtra apenas os estudos com DECISÃO TEXTO COMPLETO = include.
+"""Exporta apenas os artigos marcados como 'include' na aba FILA_236.
 
-Mantém todas as 29 colunas originais da aba FILA_236, acrescentando duas
-colunas de auditoria: LINHA ORIGINAL e ALERTA DE CONSISTÊNCIA.
+Uso (na raiz do repositório):
+  python -m pip install openpyxl
+  python analysis/scripts/separar_artigos_incluidos.py \
+    "screening/day10/fila_texto_completo_dia10_236_COM_EXTRACAO.xlsm" \
+    -o "extraction/Artigos_Incluidos_RSL_RAG_124.xlsx"
 
-O arquivo de origem (.xlsm) NUNCA é alterado. A saída é um novo .xlsx,
-sem macros, contendo apenas os registros incluídos.
-
-Uso:
-    python separar_artigos_incluidos.py "fila_texto_completo_dia10_236_COM_EXTRACAO(5).xlsm"
-
-    python separar_artigos_incluidos.py caminho.xlsm -o somente_incluidos.xlsx
-
-Dependência: artifact_tool (deve estar disponível no ambiente Python).
+A origem (.xlsm) é aberta apenas para leitura e não é alterada.
+A saída é um novo arquivo .xlsx, sem macros, com as 29 colunas A:AC,
+LINHA ORIGINAL e ALERTA DE CONSISTÊNCIA.
 """
 
 from __future__ import annotations
@@ -23,35 +19,38 @@ import argparse
 from collections import Counter
 from pathlib import Path
 import re
+import sys
 import unicodedata
-from artifact_tool import Blob, SpreadsheetFile, Workbook
+
+try:
+    from openpyxl import Workbook, load_workbook
+    from openpyxl.styles import Alignment, Font, PatternFill
+    from openpyxl.utils import get_column_letter
+except ImportError:
+    sys.exit(
+        "ERRO: falta a biblioteca 'openpyxl'.\n"
+        "Instale no mesmo Python com: python -m pip install openpyxl\n"
+        "Depois execute novamente o script."
+    )
 
 ABA_ORIGEM = "FILA_236"
 LINHA_CABECALHO = 3
 PRIMEIRA_LINHA_DADOS = 4
-ULTIMA_COLUNA_ORIGINAL = "AC"  # 29 colunas
+NUM_COLUNAS_ORIGINAIS = 29  # A:AC
 
 
 def normalizar(valor: object) -> str:
     texto = unicodedata.normalize("NFKD", str(valor or "").strip().casefold())
-    return "".join(c for c in texto if not unicodedata.combining(c))
+    return "".join(letra for letra in texto if not unicodedata.combining(letra))
 
 
-def ultima_linha_ocupada(aba) -> int:
-    # A tabela começa na linha 3 e a região atual cobre os registros de FILA_236.
-    endereco = aba.get_range("B4").get_current_region().address
-    partes = re.findall(r"\d+", endereco)
-    if not partes:
-        raise ValueError(f"Não foi possível identificar a última linha: {endereco}")
-    return int(partes[-1])
+def avaliar_alerta(cabecalhos: list[object], registro: list[object]) -> str:
+    campos = {
+        normalizar(cab): str(registro[i] if registro[i] is not None else "").strip()
+        for i, cab in enumerate(cabecalhos)
+    }
+    alertas: list[str] = []
 
-
-def avaliar_alerta(cabecalhos: list, registro: list) -> str:
-    campos = {normalizar(cab): str(registro[i] or "").strip()
-              for i, cab in enumerate(cabecalhos)}
-    alertas = []
-    # Para os estudos incluídos, os quatro critérios de elegibilidade
-    # devem estar positivos e o código principal CE deve estar vazio.
     for cab in (
         "RAG OPERACIONAL (CI1)",
         "AMBIENTAL SUBSTANTIVO (CI2)",
@@ -59,7 +58,7 @@ def avaliar_alerta(cabecalhos: list, registro: list) -> str:
         "AVALIAÇÃO EMPÍRICA (CI4)",
     ):
         resposta = normalizar(campos.get(normalizar(cab), ""))
-        if resposta in {"nao", "não", "no", "false"}:
+        if resposta in {"nao", "no", "false"}:
             alertas.append(f"{cab}: NÃO")
         elif resposta in {"", "nr", "indefinido", "pendente"}:
             alertas.append(f"{cab}: verificar")
@@ -71,111 +70,126 @@ def avaliar_alerta(cabecalhos: list, registro: list) -> str:
     return "; ".join(alertas) if alertas else "OK"
 
 
-def filtrar(origem: Path, destino: Path) -> tuple[int, int, list[str]]:
+def filtrar(origem: Path, destino: Path) -> None:
     if not origem.is_file():
-        raise FileNotFoundError(f"Planilha não encontrada: {origem}")
+        raise FileNotFoundError(f"Planilha de origem não encontrada: {origem}")
     if origem.resolve() == destino.resolve():
-        raise ValueError("O arquivo de saída precisa ser diferente da origem.")
+        raise ValueError("O destino não pode ser o mesmo arquivo da origem.")
+    if destino.suffix.lower() != ".xlsx":
+        raise ValueError("A saída deve ser um arquivo .xlsx")
 
-    entrada = SpreadsheetFile.import_xlsx(Blob.load(str(origem)))
-    aba = entrada.worksheets.get_item(ABA_ORIGEM)
-    cabecalhos = aba.get_range(f"A{LINHA_CABECALHO}:{ULTIMA_COLUNA_ORIGINAL}{LINHA_CABECALHO}").values[0]
-    colunas = {normalizar(c): indice for indice, c in enumerate(cabecalhos)}
-    if normalizar("DECISÃO TEXTO COMPLETO") not in colunas:
-        raise ValueError("Não encontrei a coluna 'DECISÃO TEXTO COMPLETO' na linha 3.")
-    indice_decisao = colunas[normalizar("DECISÃO TEXTO COMPLETO")]
-    indice_id = colunas.get(normalizar("ID"), 1)
+    entrada = load_workbook(origem, read_only=True, data_only=True)
+    try:
+        if ABA_ORIGEM not in entrada.sheetnames:
+            raise ValueError(
+                f"Aba {ABA_ORIGEM!r} não encontrada. Abas: {entrada.sheetnames}"
+            )
+        aba = entrada[ABA_ORIGEM]
+        cabecalhos = [aba.cell(LINHA_CABECALHO, col).value
+                      for col in range(1, NUM_COLUNAS_ORIGINAIS + 1)]
+        indices = {normalizar(cab): i for i, cab in enumerate(cabecalhos)}
+        chave_decisao = normalizar("DECISÃO TEXTO COMPLETO")
+        if chave_decisao not in indices:
+            raise ValueError(
+                "Coluna 'DECISÃO TEXTO COMPLETO' não encontrada na linha 3. "
+                "Confira a planilha e a aba FILA_236."
+            )
+        indice_decisao = indices[chave_decisao]
+        indice_id = indices.get(normalizar("ID"), 1)
 
-    ultima = ultima_linha_ocupada(aba)
-    registros = aba.get_range(f"A{PRIMEIRA_LINHA_DADOS}:{ULTIMA_COLUNA_ORIGINAL}{ultima}").values
-    incluidos = []
-    ids = set()
-    alertas_ids = []
-    contagens = Counter()
+        registros: list[tuple[list[object], int, str]] = []
+        contagens: Counter[str] = Counter()
+        ids: set[str] = set()
 
-    for linha_excel, registro in enumerate(registros, start=PRIMEIRA_LINHA_DADOS):
-        if not any(c is not None and str(c).strip() for c in registro):
-            continue
-        decisao = normalizar(registro[indice_decisao])
-        contagens[decisao or "(vazio)"] += 1
-        if decisao != "include":
-            continue
-        codigo = str(registro[indice_id] or "").strip()
-        if not codigo:
-            raise ValueError(f"Registro incluído na linha {linha_excel} sem ID.")
-        if codigo in ids:
-            raise ValueError(f"ID duplicado entre incluídos: {codigo}")
-        ids.add(codigo)
-        alerta = avaliar_alerta(cabecalhos, registro)
+        for linha_excel, celulas in enumerate(
+            aba.iter_rows(min_row=PRIMEIRA_LINHA_DADOS,
+                          max_col=NUM_COLUNAS_ORIGINAIS, values_only=True),
+            start=PRIMEIRA_LINHA_DADOS,
+        ):
+            registro = list(celulas)
+            if not any(v is not None and str(v).strip() for v in registro):
+                continue
+            decisao = normalizar(registro[indice_decisao])
+            contagens[decisao or "(vazio)"] += 1
+            if decisao != "include":
+                continue
+
+            codigo = str(registro[indice_id] or "").strip()
+            if not codigo:
+                raise ValueError(f"Estudo incluído sem ID na linha {linha_excel}")
+            if codigo in ids:
+                raise ValueError(f"ID duplicado entre os incluídos: {codigo}")
+            ids.add(codigo)
+            alerta = avaliar_alerta(cabecalhos, registro)
+            registros.append((registro, linha_excel, alerta))
+    finally:
+        entrada.close()
+
+    if not registros:
+        raise ValueError("Não há estudos marcados como 'include' nesta planilha.")
+
+    saida = Workbook()
+    plan = saida.active
+    plan.title = "INCLUIDOS"
+    plan.append(cabecalhos + ["LINHA ORIGINAL (FILA_236)", "ALERTA DE CONSISTÊNCIA"])
+    alertas: list[str] = []
+
+    for registro, linha_excel, alerta in registros:
+        plan.append(registro + [linha_excel, alerta])
         if alerta != "OK":
-            alertas_ids.append(f"{codigo}: {alerta}")
-        incluidos.append(list(registro) + [linha_excel, alerta])
+            codigo = str(registro[indice_id])
+            alertas.append(f"{codigo} (linha {linha_excel}): {alerta}")
+            plan.cell(plan.max_row, 31).fill = PatternFill(
+                "solid", fgColor="FDE8D3"
+            )
+            plan.cell(plan.max_row, 31).font = Font(color="9A3412", bold=True)
 
-    if not incluidos:
-        raise ValueError("Nenhum registro 'include' encontrado na aba FILA_236.")
+    cab_fill = PatternFill("solid", fgColor="163A4A")
+    for celula in plan[1]:
+        celula.fill = cab_fill
+        celula.font = Font(color="FFFFFF", bold=True)
+        celula.alignment = Alignment(vertical="center", wrap_text=True)
+    plan.row_dimensions[1].height = 38
+    plan.freeze_panes = "A2"
+    plan.auto_filter.ref = f"A1:AE{plan.max_row}"
 
-    # Criar arquivo independente: só registros incluídos, nenhuma outra decisão.
-    saida = Workbook.create()
-    plan = saida.worksheets.add("INCLUIDOS")
-    colunas_saida = list(cabecalhos) + ["LINHA ORIGINAL (FILA_236)", "ALERTA DE CONSISTÊNCIA"]
-    plan.get_range("A1:AE1").values = [colunas_saida]
-    fim = len(incluidos) + 1
-    plan.get_range(f"A2:AE{fim}").values = incluidos
-
-    # Formatação profissional e filtros; os dados textuais permanecem completos.
-    cab = plan.get_range("A1:AE1")
-    cab.format = {
-        "fill": "#163A4A",
-        "font": {"bold": True, "color": "#FFFFFF"},
-        "row_height": 35,
-        "wrap_text": True,
-        "vertical_alignment": "center",
-    }
-    plan.get_range(f"A2:AE{fim}").format.row_height = 30
-    plan.freeze_panes.freeze_rows(1)
-    plan.tables.add(f"A1:AE{fim}", True, "TabelaEstudosIncluidos")
-
-    # Larguras controladas, principalmente para texto extenso (sem autofit excessivo).
     larguras = {
-        "A": 10, "B": 13, "C": 15, "D": 55, "E": 65, "F": 22,
-        "G": 27, "H": 50, "I": 19, "J": 22, "K": 24,
-        "L": 22, "M": 23, "N": 26, "O": 17, "P": 60,
-        "Q": 60, "R": 15, "S": 17, "T": 22,
+        "A": 10, "B": 13, "C": 15, "D": 55, "E": 65,
+        "F": 22, "G": 27, "H": 50, "I": 19, "J": 22,
+        "K": 24, "L": 22, "M": 23, "N": 26, "O": 17,
+        "P": 60, "Q": 60, "R": 15, "S": 17, "T": 22,
         "U": 65, "V": 60, "W": 60, "X": 60, "Y": 60,
         "Z": 60, "AA": 60, "AB": 60, "AC": 55,
         "AD": 25, "AE": 55,
     }
     for coluna, largura in larguras.items():
-        plan.get_range(f"{coluna}1:{coluna}{fim}").format.column_width = largura
-
-    # Destacar somente os registros suspeitos, sem removê-los nem reclassificá-los.
-    for indice, registro in enumerate(incluidos, start=2):
-        if registro[-1] != "OK":
-            plan.get_range(f"AE{indice}").format.fill = "#FDE8D3"
-            plan.get_range(f"AE{indice}").format.font.color = "#9A3412"
-            plan.get_range(f"N{indice}").format.fill = "#FDE8D3"
+        plan.column_dimensions[coluna].width = largura
 
     destino.parent.mkdir(parents=True, exist_ok=True)
-    SpreadsheetFile.export_xlsx(saida).save(str(destino))
-    print(f"Arquivo de origem: {origem}")
-    print(f"Registros de origem: {sum(contagens.values())} — {dict(contagens)}")
-    print(f"Artigos incluídos exportados: {len(incluidos)}")
-    print(f"Arquivo de saída: {destino}")
-    if alertas_ids:
-        print("AVISOS (não alterados automaticamente):")
-        for aviso in alertas_ids:
-            print(f"  - {aviso}")
-    return sum(contagens.values()), len(incluidos), alertas_ids
+    saida.save(destino)
+
+    print(f"\nOrigem: {origem}")
+    print(f"Registros encontrados: {sum(contagens.values())} — {dict(contagens)}")
+    print(f"Incluídos exportados: {len(registros)}")
+    print(f"Destino: {destino.resolve()}")
+    if alertas:
+        print("\nATENÇÃO: inconsistências a revisar (nenhuma decisão foi alterada):")
+        for alerta in alertas:
+            print(f"  - {alerta}")
+    print("\nA planilha de origem não foi modificada.")
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Gera Excel com os estudos include da aba FILA_236.")
-    parser.add_argument("origem", type=Path, help="Caminho para a planilha de triagem .xlsm")
-    parser.add_argument("-o", "--saida", type=Path, default=None,
-                        help="Caminho .xlsx de saída (opcional)")
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Exporta somente os estudos 'include' de FILA_236.")
+    parser.add_argument("origem", type=Path, help="Arquivo Excel de origem (.xlsm/.xlsx)")
+    parser.add_argument("-o", "--saida", type=Path,
+                        help="Arquivo .xlsx de saída (opcional)")
     args = parser.parse_args()
-    saida = args.saida or args.origem.with_name("artigos_incluidos_filtrados.xlsx")
-    filtrar(args.origem, saida)
+    destino = args.saida or args.origem.with_name("artigos_incluidos_filtrados.xlsx")
+    try:
+        filtrar(args.origem, destino)
+    except (OSError, ValueError, PermissionError) as erro:
+        sys.exit(f"ERRO: {erro}")
 
 
 if __name__ == "__main__":
